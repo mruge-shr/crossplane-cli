@@ -1,0 +1,22 @@
+name: Build Info
+
+on:
+  push:
+    branches: [ "main" ]
+  schedule:
+    - cron: "* 1 * * *"
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  tobuildornot:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: mr-smithers-excellent/docker-build-push@v5 
+      with:
+        image: crossplane-cli 
+        registry: ghcr.io
+        username: ${{ secrets.GHCR_USERNAME }}
+        password: ${{ secrets.GHCR_TOKEN }}
