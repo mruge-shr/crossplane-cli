@@ -14,9 +14,6 @@ build:
     contents: read
     packages: write
     id-token: write
-  needs: tobuildornot
-  if: ${{needs.tobuildornot.outputs.tobuild}} == 'True'
-
   steps:
     - name: Checkout repository
       uses: actions/checkout@v3
