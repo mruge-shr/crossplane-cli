@@ -1,10 +1,7 @@
 name: Build Info
 
 on:
-  push:
-    branches: [ "main" ]
-  schedule:
-    - cron: "* 1 * * *"
+  - push
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
